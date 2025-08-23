@@ -50,7 +50,7 @@ const productSlice = createSlice({
         createProductRequest: (state) => {
             state.loading = true;
             state.error = null;
-
+            state.createSuccess = false;
         },
 
         createProductSuccess: (state, action) => {
@@ -84,6 +84,12 @@ const productSlice = createSlice({
             state.error = action.payload;
 
         },
+        resetCreateState: (state) => {
+            state.createSuccess = false;
+            state.error = null;
+        },
+
+
         resetUpdateState: (state) => {
             state.updateSuccess = false;
             state.error = null;
@@ -137,7 +143,7 @@ export const {
     createProductRequest, createProductSuccess, createProductFailure,
     updateProductRequest, updateProductSuccess, updateProductFailure,
     deleteProductRequest, deleteProductSuccess, deleteProductFailure,
-    fetchSellerProductsRequest, fetchSellerProductsFailure, fetchSellerProductsSuccess, resetUpdateState, resetDeleteProductSuccess
+    fetchSellerProductsRequest, fetchSellerProductsFailure, fetchSellerProductsSuccess, resetCreateState, resetUpdateState, resetDeleteProductSuccess
 } = productSlice.actions;
 
 export default productSlice.reducer;

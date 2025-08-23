@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { ArrowLeft, Upload, X, Save, Eye } from "lucide-react"
 import { useDispatch, useSelector } from "react-redux"
-import { createProductRequest } from "./productSlice"
+import { createProductRequest,resetCreateState } from "./productSlice"
 import { useNavigate } from "react-router-dom"
 
 
@@ -23,20 +23,22 @@ export default function AddProductsPage() {
 
 
 
-    useEffect(() => {
-        if (createSuccess) {
-            alert("Product created successfully!")
-            navigate("/sellerProducts");
-            setFormData({
-                name: "",
-                description: "",
-                price: "",
-                category: "electronics",
-                image: null,
-            })
-            setIsSubmitting(false)
-        }
-    }, [createSuccess])
+useEffect(() => {
+    if (createSuccess) {
+        alert("Product created successfully!")
+        navigate("/sellerProducts");
+        setFormData({
+            name: "",
+            description: "",
+            price: "",
+            category: "electronics",
+            image: null,
+        })
+        setIsSubmitting(false)
+
+        dispatch(resetCreateState())
+    }
+}, [createSuccess, dispatch, navigate])
 
     const categories = [
         { value: "electronics", label: "Electronics" },
