@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { fetchCartRequest } from './features/cart/cartSlice';
 import ProductDetailsPage from './features/products/ProductDetailsPage.jsx';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/landingPage.jsx';
